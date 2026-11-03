@@ -1,0 +1,16 @@
+{
+  "name": "carcompare-india",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Car-Dekho - React monorepo: web app, shared UI module and data module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace @carcompare/web",
+    "build": "npm run build --workspace @carcompare/web",
+    "preview": "npm run preview --workspace @carcompare/web",
+    "sync-data": "cp ../india_cars.json packages/data/src/india_cars.json && cp ../images/manifest.json packages/data/src/images.json"
+  }
+}
