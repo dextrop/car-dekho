@@ -107,6 +107,11 @@ Open Graph tags, visible in **view-source** (not only in the DOM):
   `apps/web/public/CNAME` (currently `car-dekho.com`).
 - Search-result URLs such as `/nexon` are not prerendered (unbounded); they get their tags from
   the dev plugin or from the browser hook.
+- **Never hand-edit `docs/`**: `build:pages` deletes and recreates it, and an edited
+  `index.html` can end up pointing at a bundle hash that no longer exists (blank page). Put
+  site-wide additions in `apps/web/index.html` (the Google Analytics tag lives there and is
+  copied into every prerendered page) and static files such as the Search Console
+  verification file in `apps/web/public/`.
 
 | Page | Keywords |
 |---|---|
