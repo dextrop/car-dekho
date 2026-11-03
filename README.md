@@ -41,8 +41,9 @@ Requires Node 18+.
 cd react-app
 npm install
 npm run dev        # http://localhost:5173
-npm run build      # production bundle in apps/web/dist
+npm run build      # production bundle in apps/web/dist (+ prerender, sitemap, robots, 404)
 npm run preview    # serve the production bundle
+npm run build:pages  # build and copy it to react-app/docs for GitHub Pages
 ```
 
 ## Update the data
@@ -83,6 +84,8 @@ the production build serve the same files as the vanilla site. `getImages(modelK
 | `/<brand>/<model>` e.g. `/hyundai/creta` | Model detail with variants |
 | `/<brand>/<model>/<variant>` e.g. `/hyundai/creta/sx` | Model page with that variant expanded; opening a row updates the URL |
 | `/compare` | Side-by-side compare |
+| `/sitemap` | HTML sitemap: every brand, model and variant page |
+| `/sitemap.xml`, `/robots.txt` | Generated at build time |
 | `/model/<brand>/<model>` | Legacy, redirects to `/<brand>/<model>` |
 
 ### Page keywords / SEO
@@ -98,7 +101,10 @@ Open Graph tags, visible in **view-source** (not only in the DOM):
   variants) with the tags baked in. `npm run preview` and static hosts (Netlify, Vercel,
   nginx `try_files $uri $uri/ /index.html`) serve `/hyundai/creta` from that folder.
 - **In the browser**: the `useSeo` hook keeps the tags in sync during client-side navigation.
-- Set `VITE_SITE_URL=https://your-domain` when building to also emit `<link rel="canonical">`.
+- The same step writes `sitemap.xml` (every page, 1,666 URLs), `robots.txt` pointing at it, and
+  `404.html` (GitHub Pages serves it for unknown paths, so search URLs like `/nexon` still load).
+- Absolute URLs (sitemap, canonical) use `VITE_SITE_URL` if set, else the domain in
+  `apps/web/public/CNAME` (currently `car-dekho.com`).
 - Search-result URLs such as `/nexon` are not prerendered (unbounded); they get their tags from
   the dev plugin or from the browser hook.
 

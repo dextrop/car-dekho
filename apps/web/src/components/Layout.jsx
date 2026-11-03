@@ -23,6 +23,7 @@ export default function Layout() {
       <CompareTray hidden={pathname === '/compare'} />
       <footer className="footer">
         Prices are {META.priceType} in {META.currency} · data as of {META.dataAsOf} · {BRANDS.length} brands, {MODELS.length} models, {VARIANTS.length} variants
+        <Link to="/sitemap">Sitemap</Link>
       </footer>
     </>
   );

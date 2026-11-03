@@ -68,4 +68,12 @@
 .cmp-toolbar label { display: inline-flex; gap: 6px; align-items: center; font-size: 14px; cursor: pointer; }
 .page-title { font-size: 28px; letter-spacing: -.02em; margin-bottom: 6px; }
 .footer { text-align: center; color: var(--muted); font-size: 12px; padding: 20px 16px 120px; }
+.footer a { text-decoration: underline; text-decoration-color: var(--border); margin-left: 6px; }
+.sitemap-list { margin: 0; padding: 0 0 0 18px; columns: 2; column-gap: 24px; font-size: 14px; line-height: 1.7; }
+.sitemap-list a:hover { color: var(--accent); }
+.sitemap-brand { display: grid; gap: 4px; }
+.sitemap-model summary { cursor: pointer; font-weight: 600; padding: 4px 0; }
+.sitemap-model summary a:hover { color: var(--accent); }
+.sitemap-model[open] summary { margin-bottom: 6px; }
+@media (max-width: 560px) { .sitemap-list { columns: 1; } }
 @media print { .cmp th, .cmp td { position: static !important; } .cmp tr.diff td:not(:first-child) { background: #fdf1ee !important; print-color-adjust: exact; -webkit-print-color-adjust: exact; } }

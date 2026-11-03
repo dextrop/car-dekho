@@ -3,6 +3,7 @@ import Layout from './components/Layout.jsx';
 import SearchPage from './pages/SearchPage/index.jsx';
 import ModelPage from './pages/ModelPage/index.jsx';
 import ComparePage from './pages/ComparePage/index.jsx';
+import SitemapPage from './pages/SitemapPage/index.jsx';
 
 /** Old /model/<brand>/<model> links keep working. */
 function LegacyModelRedirect() {
@@ -18,6 +19,7 @@ function LegacyModelRedirect() {
  *   /<brand>/<model>           model page, e.g. /hyundai/creta
  *   /<brand>/<model>/<variant> model page with that variant opened, e.g. /hyundai/creta/sx
  *   /compare                   compare selected variants
+ *   /sitemap                   HTML sitemap (sitemap.xml is generated at build time)
  */
 export default function App() {
   return (
@@ -25,6 +27,7 @@ export default function App() {
       <Route element={<Layout />}>
         <Route path=":q?" element={<SearchPage />} />
         <Route path="compare" element={<ComparePage />} />
+        <Route path="sitemap" element={<SitemapPage />} />
         <Route path="model/:brand/:model/:variant?" element={<LegacyModelRedirect />} />
         <Route path=":brand/:model/:variant?" element={<ModelPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />

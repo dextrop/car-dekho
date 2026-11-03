@@ -11,6 +11,7 @@
     "dev": "npm run dev --workspace @carcompare/web",
     "build": "npm run build --workspace @carcompare/web",
     "preview": "npm run preview --workspace @carcompare/web",
+    "build:pages": "npm run build:pages --workspace @carcompare/web",
     "sync-data": "cp ../india_cars.json packages/data/src/india_cars.json && cp ../images/manifest.json packages/data/src/images.json"
   }
 }

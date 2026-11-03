@@ -19,6 +19,11 @@ export function seoForPath(pathname) {
   if (parts[0] === 'model') parts.shift();                      // legacy /model/<brand>/<model>
   if (parts.length === 0) return home();
 
+  if (parts[0] === 'sitemap') return {
+    title: 'Sitemap – All Brands, Models & Variants',
+    description: `Every page on ${SITE_NAME}: ${BRANDS.length} brands, ${MODELS.length} models and ${VARIANTS.length} variants with prices.`,
+    keywords: ['Sitemap', 'All Cars', 'All Car Variants', ...BRANDS],
+  };
   if (parts[0] === 'compare') return {
     title: 'Compare Car Variants',
     description: 'Pick up to four variants from any cars and compare price, specs and features side by side.',
@@ -60,7 +65,7 @@ export function seoForPath(pathname) {
 
 /** Every static route worth prerendering: home, compare, brands, models and variants. */
 export function allRoutes() {
-  const routes = ['/', '/compare'];
+  const routes = ['/', '/compare', '/sitemap'];
   for (const b of BRANDS) routes.push(`/${slug(b)}`);
   for (const m of MODELS) {
     routes.push(`/${m.key}`);

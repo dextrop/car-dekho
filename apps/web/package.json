@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build && node scripts/prerender.mjs",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:pages": "npm run build && rm -rf ../../docs && cp -R dist ../../docs"
   },
   "dependencies": {
     "@carcompare/data": "*",
